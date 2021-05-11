@@ -14,5 +14,5 @@ Petit projet qui utilise l'API mise à disposition par la RMNGP (Réunion des Mu
 
 https://api.art.rmngp.fr/?locale=fr
 
-Tous les jours, une oeuvre du Musée d'Orsay s'affiche, ainsi que ces informations. Il y a environ 44 000 oeuvres à découvrir, donc n'hésitez pas à aller voir l'oeuvre choisie aujourd'hui ! 
+Tous les jours, une oeuvre du Musée d'Orsay s'affiche, ainsi que ses informations. Il y a environ 44 000 oeuvres à découvrir, donc n'hésitez pas à aller voir l'oeuvre choisie aujourd'hui ! 
 
