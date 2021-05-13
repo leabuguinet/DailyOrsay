@@ -44840,8 +44840,8 @@ return response.json();
 })
 .then(function(artwork)
 {
-/* 
-console.log(artwork.hits.hits[0]._source) */
+
+console.log(artwork.hits.hits[0]._source)
 
 
 /* Artist Name */
@@ -44862,15 +44862,6 @@ else{
   document.querySelector('.birthDate').innerHTML = errorMessage;
 };
 
-/* Citizenship */
-if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].citizenship)){
-  citizenship = artwork.hits.hits[0]._source.authors[0].citizenship;
-  document.querySelector('.citizenship').innerHTML = citizenship;
-}
-else{
-  document.querySelector('.citizenship').innerHTML = errorMessage;
-};
-
 /* Death Date */
 if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].death)){
   deathDate = artwork.hits.hits[0]._source.authors[0].death.display;
@@ -44886,14 +44877,15 @@ if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].wikipedia_extract))
   document.querySelector('.wikipedia_extract').innerHTML = wikipedia_extract;
 }
 else{
-  document.querySelector('.wikipedia_extract').innerHTML = errorMessage;
+  document.querySelector('.wikipedia_extract').innerHTML = '';
 };
-
 
 /* Image URL */
 if (doesExistIsEmpty(artwork.hits.hits[0]._source.images)){
   artUrl = artwork.hits.hits[0]._source.images[0].urls.large.url;
-  document.querySelector('.artUrl').innerHTML = artUrl;
+  document.querySelector('.artUrl').src = artUrl;
+  
+   
 }
 else{
   document.querySelector('.artUrl').innerHTML = errorMessage;
@@ -44903,6 +44895,8 @@ else{
 if (doesExistIsEmpty(artwork.hits.hits[0]._source.title)){
   artTitle = artwork.hits.hits[0]._source.title.fr;
   document.querySelector('.artTitle').innerHTML = artTitle;
+
+  document.querySelector('.artUrl').alt = `${artTitle} - ${artistName}`; // ALT of the picture
 }
 else{
   document.querySelector('.artTitle').innerHTML = errorMessage;
@@ -44919,15 +44913,15 @@ else{
 
 /* Description */
 if (doesExistIsEmpty(artwork.hits.hits[0]._source.detail)){
-  artDescription = artwork.hits.hits[0]._source.detail[0].name.fr;
+  artDescription = artwork.hits.hits[0]._source.detail.fr;
   document.querySelector('.artDescription').innerHTML = artDescription;
 }
 else{
   document.querySelector('.artDescription').innerHTML = errorMessage;
 };
 
-artHeight = artwork.hits.hits[0]._source.height;
-artWidth = artwork.hits.hits[0]._source.width;
+artHeight = artwork.hits.hits[0]._source.height / 100;
+artWidth = artwork.hits.hits[0]._source.width / 100;
 
 document.querySelector('.artHeight').innerHTML = artHeight;
 document.querySelector('.artWidth').innerHTML = artWidth;

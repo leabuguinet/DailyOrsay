@@ -1,5 +1,9 @@
 Daily Orsay
 
+
+![Alt text](assets/dailyorsay-screenshot.png?raw=true "Title")
+WORK IN PROGRESS !
+
 /////// ENGLISH
 
 This is a little project made with the great RMNGP (Réunion des Musées Nationaux) API. This API gives access to the artworks of 18 French museums, their photograph and metadatas. 
