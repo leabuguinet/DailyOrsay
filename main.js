@@ -40,7 +40,7 @@ String.prototype.hashCode = function () {
 
 /* Function to check if an object exists and is not empty */
 function doesExistIsEmpty(obj){
-  if(typeof obj != "undefined" && Object.keys(obj).length !==0){
+  if(typeof obj != 'undefined' && Object.keys(obj).length !==0){
     return true
   }
 };
@@ -59,7 +59,7 @@ function fetchArtDetail(idOfTheDay, typeOfArt){
       console.log(artwork.hits.hits[0]._source)
 
       /* Artist Name */
-      if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].name)){
+      if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0])){
         artistName = artwork.hits.hits[0]._source.authors[0].name.fr;
         document.querySelector(`.orsay-${typeOfArt}--label .artistName`).innerHTML = artistName;
       }
@@ -68,7 +68,7 @@ function fetchArtDetail(idOfTheDay, typeOfArt){
       };
 
       /* Birth date */
-      if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].birth)){
+      if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0]) && doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].birth)){
         birthDate = artwork.hits.hits[0]._source.authors[0].birth.display;
         document.querySelector(`.orsay-${typeOfArt}--label .birthDate`).innerHTML = birthDate;
       }
@@ -77,7 +77,7 @@ function fetchArtDetail(idOfTheDay, typeOfArt){
       };
 
       /* Death Date */
-      if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].death)){
+      if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0]) && doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].death)){
         deathDate = artwork.hits.hits[0]._source.authors[0].death.display;
         document.querySelector(`.orsay-${typeOfArt}--label .deathDate`).innerHTML = deathDate;
       }
@@ -86,7 +86,7 @@ function fetchArtDetail(idOfTheDay, typeOfArt){
       };
 
       /* Wikipedia extract */
-      if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].wikipedia_extract)){
+      if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0]) && doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].wikipedia_extract)){
         wikipedia_extract = artwork.hits.hits[0]._source.authors[0].wikipedia_extract.fr;
         document.querySelector(`.orsay-${typeOfArt}--label .wikipedia_extract`).innerHTML = wikipedia_extract;
       }
