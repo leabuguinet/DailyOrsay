@@ -157,9 +157,40 @@ indexPositionPhotograph = Math.abs(Math.round(dividedHashedDate * idListPhotogra
 
 /* Get the Ids of the day */
 
-idPaintingOfTheDay = idListPaintings[indexPositionPainting];
-idSculptureOfTheDay = idListSculptures[indexPositionSculpture];
-idPhotographOfTheDay = idListPhotographs[indexPositionPhotograph];
+let idPaintingOfTheDay = idListPaintings[indexPositionPainting];
+let idSculptureOfTheDay = idListSculptures[indexPositionSculpture];
+let idPhotographOfTheDay = idListPhotographs[indexPositionPhotograph];
+
+
+// Construire un "objet" Formdata qui va contenir toutes les valeurs a transmettre en POST
+
+let data = new FormData();
+data.append('idPaintingOfTheDay' , idPaintingOfTheDay );
+data.append('idSculptureOfTheDay' , idSculptureOfTheDay );
+data.append('idPhotographOfTheDay' , idPhotographOfTheDay );
+                    
+// constuire les options de configuration de la requete AJAX sous la forme d'un objet
+
+let parameters = 
+  {
+    'method' : "post",
+    'body' : data
+  }                       
+
+  window.fetch('index.php', parameters )
+                // choisir le format pour recuperer les données de la page PHP
+                .then(function( response )
+                {
+                    return response.text();
+                })
+                .then(function( text )
+                {
+                    document.getElementById("result").innerHTML =   text ;
+                })
+
+
+
+
 
 const painting = 'painting';
 const sculpture = 'sculpture';

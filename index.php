@@ -1,46 +1,63 @@
 <?php
 
     /* https://weichie.com/blog/curl-api-calls-with-php/ */
+    include('data.php');
 
-
-    function callAPI($method, $url, $data){
+    function callAPI($url, $data){
         $curl = curl_init();
-        switch ($method){
-            case "POST":
-                curl_setopt($curl, CURLOPT_POST, 1);
-                if ($data)
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-                break;
-            case "PUT":
-                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-                if ($data)
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);			 					
-                break;
-            default:
-                if ($data)
-                    $url = sprintf("%s?%s", $url, http_build_query($data));
+        
+        if ($data)
+        $url = sprintf("%s?%s", $url, http_build_query($data));
+    
+        // OPTIONS:
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+            "APIKEY: 4ebda350062acbb93dea38fac8248fa99653d8a0a89b2f7b4347918690bbeee5",
+        ));
+
+        // EXECUTE:
+        $result = curl_exec($curl);
+
+        if(!$result){die("Connection Failure");}
+        curl_close($curl);
+        return $result;
     }
 
-    // OPTIONS:
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-        'APIKEY: 111111111111111111111',
-        'Content-Type: application/json',
-    ));
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-    // EXECUTE:
-    $result = curl_exec($curl);
-    if(!$result){die("Connection Failure");}
-    curl_close($curl);
-    return $result;
+    
+
+    
+    //GET TODAY'S DATE
+    $date = date_create();
+    if (!$date) {
+        $e = date_get_last_errors();
+        foreach ($e['errors'] as $error) {
+            echo "$error\n";
+        }
+        exit(1);
     }
+    
+    $currentDate = date_format($date, 'Y-m-d');
 
-    $get_data = callAPI('GET', 'https://api.example.com/get_url/'.$user['User']['customer_id'], false);
-    $response = json_decode($get_data, true);
-    $errors = $response['response']['errors'];
-    $data = $response['response']['data'][0];
+    $hashedCurrentDate = crc32($currentDate); 
+   
+    $dividedHashedDate = $hashedCurrentDate / 2147483647;
 
+    $indexPositionPainting = abs(round($dividedHashedDate * count($idListPaintings))); 
+    $indexPositionSculpture = abs(round($dividedHashedDate * count($idListSculptures)));
+    $indexPositionPhotograph = abs(round($dividedHashedDate * count($idListPhotographs)));
 
+    $idPaintingOfTheDay = $idListPaintings[$indexPositionPainting];
+    $idSculptureOfTheDay = $idListSculptures[$indexPositionSculpture];
+    $idPhotographOfTheDay = $idListPhotographs[$indexPositionPhotograph];
+    
+
+    $paintingOfTheDay = callAPI("https://api.art.rmngp.fr:443/v1/works/{$idPaintingOfTheDay}", false);
+    $response = json_decode($paintingOfTheDay, true);
+
+    $sculptureOfTheDay = callAPI("https://api.art.rmngp.fr:443/v1/works/{$idSculptureOfTheDay}", false);
+    $response = json_decode($sculptureOfTheDay, true);
+
+    $photographOfTheDay = callAPI("https://api.art.rmngp.fr:443/v1/works/{$idPhotographOfTheDay}", false);
+    $response = json_decode($photographOfTheDay, true);
 
 ?>
