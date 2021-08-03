@@ -67,8 +67,17 @@ function fetchArtDetail(typeOfArt, urlArtDetail) {
 
       /* Wikipedia extract */
       if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0]) && doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].wikipedia_extract)) {
-        wikipedia_extract = artwork.hits.hits[0]._source.authors[0].wikipedia_extract.fr;
+        
+        if(artwork.hits.hits[0]._source.authors[0].wikipedia_extract.en != null){
+          wikipedia_extract = artwork.hits.hits[0]._source.authors[0].wikipedia_extract.en;
+        }
+        else{
+          wikipedia_extract = "Only French description available:" + artwork.hits.hits[0]._source.authors[0].wikipedia_extract.fr;
+        }
+
         document.querySelector(`.orsay-${typeOfArt}--label .wikipedia_extract`).innerHTML = wikipedia_extract;
+      
+
       } else {
         document.querySelector(`.orsay-${typeOfArt}--label .wikipedia_extract`).innerHTML = '';
       };
@@ -97,6 +106,14 @@ function fetchArtDetail(typeOfArt, urlArtDetail) {
         document.querySelector(`.orsay-${typeOfArt}--label .artTechnique`).innerHTML = artTechnique;
       } else {
         document.querySelector(`.orsay-${typeOfArt}--label .artTechnique`).innerHTML = errorMessage;
+      };
+
+      /* Creation Date */
+      if (doesExistIsEmpty(artwork.hits.hits[0]._source.date)) {
+        artCreationDate = artwork.hits.hits[0]._source.date.display;
+        document.querySelector(`.orsay-${typeOfArt}--label .artCreationDate`).innerHTML = artCreationDate;
+      } else {
+        document.querySelector(`.orsay-${typeOfArt}--label .artCreationDate`).innerHTML = errorMessage;
       };
 
       /* Description */
