@@ -1,7 +1,10 @@
 <?php
 
-    /* https://weichie.com/blog/curl-api-calls-with-php/ */
     include('data.php');
+
+    /* Function to call the API */
+
+            /* https://weichie.com/blog/curl-api-calls-with-php/ */
 
     function callAPI($url, $data){
         $curl = curl_init();
@@ -23,10 +26,9 @@
         return $result;
     }
 
-    
 
-    
-    //GET TODAY'S DATE
+    /* Get today's date */
+  
     $date = date_create();
     if (!$date) {
         $e = date_get_last_errors();
@@ -38,26 +40,22 @@
     
     $currentDate = date_format($date, 'Y-m-d');
 
-    $hashedCurrentDate = crc32($currentDate); 
+    
+    $hashedCurrentDate = crc32($currentDate); // hash the date 
    
-    $dividedHashedDate = $hashedCurrentDate / 2147483647;
+    $dividedHashedDate = $hashedCurrentDate / 2147483647; // divide the hash by the maximum number of a hash number
 
+
+    // Get the index position from the hash number * the length of the id's lists
     $indexPositionPainting = abs(round($dividedHashedDate * count($idListPaintings))); 
     $indexPositionSculpture = abs(round($dividedHashedDate * count($idListSculptures)));
     $indexPositionPhotograph = abs(round($dividedHashedDate * count($idListPhotographs)));
 
+    // The index position gives the artwork of today, and we need to get its ID so we can fetch the corresponding data and send it back to our JS code.
     $idPaintingOfTheDay = $idListPaintings[$indexPositionPainting];
     $idSculptureOfTheDay = $idListSculptures[$indexPositionSculpture];
     $idPhotographOfTheDay = $idListPhotographs[$indexPositionPhotograph];
     
 
-    $paintingOfTheDay = callAPI("https://api.art.rmngp.fr:443/v1/works/{$idPaintingOfTheDay}", false);
-    $response = json_decode($paintingOfTheDay, true);
-
-    $sculptureOfTheDay = callAPI("https://api.art.rmngp.fr:443/v1/works/{$idSculptureOfTheDay}", false);
-    $response = json_decode($sculptureOfTheDay, true);
-
-    $photographOfTheDay = callAPI("https://api.art.rmngp.fr:443/v1/works/{$idPhotographOfTheDay}", false);
-    $response = json_decode($photographOfTheDay, true);
-
+   
 ?>
