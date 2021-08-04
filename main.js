@@ -83,9 +83,17 @@ function fetchArtDetail(typeOfArt, urlArtDetail) {
       };
 
       /* Image URL */
-      if (doesExistIsEmpty(artwork.hits.hits[0]._source.images)) {
+      /* if (doesExistIsEmpty(artwork.hits.hits[0]._source.images)) {
         artUrl = artwork.hits.hits[0]._source.images[0].urls.large.url;
         document.querySelector(`.orsay-${typeOfArt}--frame .artUrl`).src = artUrl;
+      } else {
+        document.querySelector(`.orsay-${typeOfArt}--frame .artUrl`).innerHTML = errorMessage;
+      }; */
+
+
+      if (doesExistIsEmpty(artwork.hits.hits[0]._source.images)) {
+        artUrl = artwork.hits.hits[0]._source.images[0].urls.large.url;
+        document.querySelector(`.orsay-${typeOfArt}--frame .artUrl`).style.backgroundImage = `url('${artUrl}')`;
       } else {
         document.querySelector(`.orsay-${typeOfArt}--frame .artUrl`).innerHTML = errorMessage;
       };
