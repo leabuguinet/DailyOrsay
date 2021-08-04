@@ -12,7 +12,6 @@ const myInit = {
 /* Looping over all the pages the API sends */
 
 let nbPagePhotography = 229; //Thanks to the JavaScript console of the API, we already know that they are 22876 items and that we can only have 100 items maximum per page. We can calculate the number of page : 22876 / 100 = 228,76 -> 229 pages
-
 const typePhotography = 'Photographies'
 
 let nbPagePainting = 36;

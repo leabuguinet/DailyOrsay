@@ -42,8 +42,17 @@
 
     
     $hashedCurrentDate = crc32($currentDate); // hash the date 
+
+  
+    
    
-    $dividedHashedDate = $hashedCurrentDate / 2147483647; // divide the hash by the maximum number of a hash number
+    $dividedHashedDate = $hashedCurrentDate / 4294967295 /*  2147483647 */; // divide the hash by the maximum number of a 32bit integer number
+
+
+
+
+
+
 
 
     // Get the index position from the hash number * the length of the id's lists
@@ -51,10 +60,16 @@
     $indexPositionSculpture = abs(round($dividedHashedDate * count($idListSculptures)));
     $indexPositionPhotograph = abs(round($dividedHashedDate * count($idListPhotographs)));
 
+   
+
+  
+
     // The index position gives the artwork of today, and we need to get its ID so we can fetch the corresponding data and send it back to our JS code.
     $idPaintingOfTheDay = $idListPaintings[$indexPositionPainting];
     $idSculptureOfTheDay = $idListSculptures[$indexPositionSculpture];
     $idPhotographOfTheDay = $idListPhotographs[$indexPositionPhotograph];
+
+
     
 
    
