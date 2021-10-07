@@ -39,7 +39,7 @@ function fetchArtDetail(typeOfArt, urlArtDetail) {
       return response.json();
     })
     .then(function (artwork) {
-      console.log(artwork.hits.hits[0]._source)
+      //console.log(artwork.hits.hits[0]._source)
 
       /* Artist Name */
       if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0])) {
