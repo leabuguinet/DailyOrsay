@@ -1,5 +1,5 @@
 *{
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
 }
@@ -10,61 +10,122 @@ body{
     color: white;
 }
 
+/**** HEADER ****/
+
 .orsay-header{
-    margin-left: 4rem;
     padding: 15rem 0rem 9rem;
     background: linear-gradient(0deg, rgba(0,0,0,1) 8%, rgba(255,255,255,0) 15%, rgba(254,254,254,0) 100%), url('background-orsay.jpg');
     background-repeat: no-repeat;
-    /* background-position: center;  */
-    background-position: 185px;
-    background-size: cover;
+    background-position: center; 
+    background-size: contain;
     
 }
 
 .orsay-header h2{
+    margin-left: 6rem;
     font-size: 2rem;
     font-weight: 300;
     max-width: 50%;
 }
 
 .orsay-header img{
-    width: 40%;
+    margin-left: 6rem;
+    width: 30%;
     margin-bottom: 3rem;
 }
 
-.leftline{
-    animation: left-line-grow 3s ease-in-out;
+/**** SQUARE TITLE ****/
+
+.square-title h2{
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    transform: rotate(-45deg);
+    transform-origin: center; 
+
 }
 
-.rightline{
-    animation: right-line-grow 3s ease-in-out;
+.square-title
+{
+  width: 150px;
+  margin: 0 auto;
+  padding: 2px;
+  background-color: black; /* gold */
+  /* Single pixel data uri image http://jsfiddle.net/LPxrT/ 
+  /* background-image: white, white, black */
+  background-image: url('data:image/gif;base64,R0lGODlhAQABAPAAAP///////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='),  url('data:image/gif;base64,R0lGODlhAQABAPAAAP///////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='),
+  url('data:image/gif;base64,R0lGODlhAQABAPAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==');
+  background-repeat: no-repeat;
+  background-size: 0 2px, 0 100%, 0% 0px;
+  background-position: left top, top right, bottom right;
+  -webkit-animation: drawBorderFromCenter 4s forwards;
+  animation: drawBorderFromCenter 4s forwards;
+  transform: rotate(45deg);
+
 }
 
-@keyframes right-line-grow{
-    from{
-        transform: scale(0,1);
-        transform-origin: right;
+@keyframes drawBorderFromCenter {
+    0% {
+      background-size: 0 2px, 0 0, 100% 100%;
+     
     }
-    to{
-        transform: scale(1,1);
-        transform-origin: right;
+    50% {
+      background-size: 98% 98%, 0 0, 100% 100%;
+     
     }
-} 
+    99%
+    {
+      background-size: 98% 98%, 100% 98%, 0 2px;
+      
+    }
+    100%
+    {
+      background-size: 98% 98%, 100% 98%, 0 2px;
+      background-color: white; 
+    }
+    
+}
 
-@keyframes left-line-grow{
-    from{
-        transform: scale(0,1);
-        transform-origin: left;
+/* Chrome, Safari, Opera */
+@-webkit-keyframes drawBorderFromCenter {
+    0% {
+      background-size: 0 2px, 0 0, 100% 100%;
+      
     }
-    to{
-        transform: scale(1,1);
-        transform-origin: left;
+    50% {
+      background-size: 98% 98%, 0 0, 100% 100%;
+      
     }
-} 
+    99%
+    {
+      background-size: 98% 98%, 100% 98%, 0 2px;
+      
+    }
+    100%
+    {
+      background-size: 98% 98%, 100% 98%, 0 2px;
+      background-color: white; 
+    }
+    
+}
+
+.content
+{
+    display: flex;
+    align-items: center;
+    background: black;
+    text-align: center;
+    height: 150px;
+}
+
+
+
+
+/**** ART SECTION - GENERAL ****/
 
 .section-style, .orsay-footer{
     border: solid white 1px;
-    margin: 0 2rem 3rem;
+    margin: 0 6rem 3rem;
     padding: 2rem;
     
 }
@@ -89,13 +150,21 @@ body{
     margin: auto;
 }
 
-
 .section-style--label{
     padding: 3rem;
     font-size: 1.3rem;
     font-weight: 300;
     line-height: 30px;
 }
+
+/* Firt section - painting section */
+
+.orsay-painting{
+    margin-top: 2.2rem;
+}
+
+
+/**** FOOTER ****/
 
 .orsay-footer{
     font-weight: 300;
