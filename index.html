@@ -20,10 +20,12 @@
     <body>
       
         
-        <header class="orsay-header">
+        <header class="">
                 
-            <img src='assets/dailyorsay-logo.png' alt="Daily Orsay"></img>
-            <h2>Everyday, discover a painting, a sculpture and a photograph from the museum's collections</h2>
+            <img src='assets/dailyorsay-logo.png' alt="Daily Orsay" class="orsay-logo"></img>
+            <div class="orsay-header"></div>
+            <h2 class="orsay-phrase">Everyday, discover a painting, a sculpture and a photograph from the museum's collections</h2>
+
 
         </header>
 
@@ -51,21 +53,52 @@
             <section class="section-style orsay-painting">
                 
                 <div class="section-style--frame orsay-painting--frame">
-                    <div class="section-style--picture orsay-painting--picture artUrl">
-        
-                    </div>
-                    
+
+                    <a href="#" class="orsay-painting--link">
+                        <img src="" alt="" class="section-style--picture orsay-painting--picture artUrl">
+                    </a>
+                
                     <h4 class='artTitle'>Title of the artwork</h4>
+
                 </div>
 
                 <div class="section-style--label orsay-painting--label">
-                    <p>Artist : <span class='artistName'> </span></p>
+
+
+                    <table>
+                        <!-- <caption>Information about the artist and the artwork</caption> -->
+                        <tr>
+                          <td>Artist:</td>
+                          <td> <span class='artistName'></span> (<span class='birthDate'></span> - <span class='deathDate'></span>) </td>
+                        </tr>
+                        <tr>
+                          <td>Description: </td>
+                          <td> <span class='artDescription'></span> </td>
+                        </tr>
+                        <tr>
+                            <td>Size: </td>
+                            <td> <span class='artWidth'></span>cm x <span class='artHeight'></span>cm </td>
+                        </tr>
+                        <tr>
+                            <td>Techniques: </td>
+                            <td> <span class='artTechnique'> </span> </td>
+                        </tr>
+                        <tr>
+                            <td>Creation&nbsp;date: </td>
+                            <td> <span class='artCreationDate'> </span> </td>
+                        </tr>
+                       
+                    </table>
+
+                    <p class='wikipedia_extract'></p>
+
+                    <!-- <p>Artist : <span class='artistName'> </span></p>
                     <p> <span class='birthDate'></span> - <span class='deathDate'></span> </p>
                     <p> Description : <span class='artDescription'> </span></p>
                     <p> Size : <span class='artWidth'></span>cm x <span class='artHeight'></span>cm</p>
                     <p> Techniques : <span class='artTechnique'> </span></p>
                     <p> Creation date : <span class='artCreationDate'> </span></p>
-                    <p class='wikipedia_extract'></p>
+                    <p class='wikipedia_extract'></p> -->
                 </div>
 
             </section>
@@ -73,20 +106,41 @@
             <section class="section-style orsay-sculpture">
             
                 <div class="section-style--frame orsay-sculpture--frame">
-                    <div class="section-style--picture orsay-sculpture--picture artUrl">
-        
-                    </div>
                     
+                    <a href="#" class="orsay-sculpture--link">
+                        <img src="" alt="" class="section-style--picture orsay-sculpture--picture artUrl">
+                    </a>
+
                     <h4 class='artTitle'>Title of the artwork</h4>
+
                 </div>
 
                 <div class="section-style--label orsay-sculpture--label">
-                    <p>Artist : <span class='artistName'> </span></p>
-                    <p> <span class='birthDate'></span> - <span class='deathDate'></span> </p>
-                    <p> Description : <span class='artDescription'> </span></p>
-                    <p> Size : <span class='artWidth'></span>cm x <span class='artHeight'></span>cm</p>
-                    <p> Techniques : <span class='artTechnique'> </span></p>
-                    <p> Creation date : <span class='artCreationDate'> </span></p>
+                    <table>
+                        <!-- <caption>Information about the artist and the artwork</caption> -->
+                        <tr>
+                            <td>Artist:</td>
+                            <td> <span class='artistName'></span> (<span class='birthDate'></span> - <span class='deathDate'></span>) </td>
+                        </tr>
+                        <tr>
+                            <td>Description: </td>
+                            <td> <span class='artDescription'></span> </td>
+                        </tr>
+                        <tr>
+                            <td>Size: </td>
+                            <td> <span class='artWidth'></span>cm x <span class='artHeight'></span>cm </td>
+                        </tr>
+                        <tr>
+                            <td>Techniques: </td>
+                            <td> <span class='artTechnique'> </span> </td>
+                        </tr>
+                        <tr>
+                            <td>Creation&nbsp;date: </td>
+                            <td> <span class='artCreationDate'> </span> </td>
+                        </tr>
+                    
+                    </table>
+
                     <p class='wikipedia_extract'></p>
                 </div>
 
@@ -95,20 +149,41 @@
             <section class="section-style orsay-photograph">
                 
                 <div class="section-style--frame orsay-photograph--frame">
-                    <div class="section-style--picture orsay-photograph--picture artUrl">
-                   
-                    </div>
                     
+                    <a href="#" class="orsay-photograph--link">
+                        <img src="" alt="" class="section-style--picture orsay-photograph--picture artUrl">
+                    </a>
+
                     <h4 class='artTitle'>Title of the artwork</h4>
+
                 </div>
 
                 <div class="section-style--label orsay-photograph--label">
-                    <p>Artist : <span class='artistName'> </span></p>
-                    <p> <span class='birthDate'></span> - <span class='deathDate'></span> </p>
-                    <p> Description : <span class='artDescription'> </span></p>
-                    <p> Size : <span class='artWidth'></span>cm x <span class='artHeight'></span>cm</p>
-                    <p> Techniques : <span class='artTechnique'> </span></p>
-                    <p> Creation date : <span class='artCreationDate'> </span></p>
+                    <table>
+                        <!-- <caption>Information about the artist and the artwork</caption> -->
+                        <tr>
+                            <td>Artist:</td>
+                            <td> <span class='artistName'></span> (<span class='birthDate'></span> - <span class='deathDate'></span>) </td>
+                        </tr>
+                        <tr>
+                            <td>Description: </td>
+                            <td> <span class='artDescription'></span> </td>
+                        </tr>
+                        <tr>
+                            <td>Size: </td>
+                            <td> <span class='artWidth'></span>cm x <span class='artHeight'></span>cm </td>
+                        </tr>
+                        <tr>
+                            <td>Techniques: </td>
+                            <td> <span class='artTechnique'> </span> </td>
+                        </tr>
+                        <tr>
+                            <td>Creation&nbsp;date: </td>
+                            <td> <span class='artCreationDate'> </span> </td>
+                        </tr>
+                    
+                    </table>
+
                     <p class='wikipedia_extract'></p>
                 </div>
 
