@@ -13,26 +13,29 @@ body{
 /**** HEADER ****/
 
 .orsay-header{
-    padding: 15rem 0rem 9rem;
     background: linear-gradient(0deg, rgba(0,0,0,1) 8%, rgba(255,255,255,0) 15%, rgba(254,254,254,0) 100%), url('background-orsay.jpg');
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
     background-size: contain;
+    width: 100%;
+    height: 80vh;
     
 }
 
-.orsay-header h2{
-    margin-left: 6rem;
+.orsay-phrase{
     font-size: 2rem;
     font-weight: 300;
-    max-width: 50%;
+    max-width: 60%;
+    margin-bottom: 8rem;
 }
 
-.orsay-header img{
+.orsay-logo{
     margin-left: 6rem;
     width: 30%;
-    margin-bottom: 3rem;
+    position: absolute;
+    top: 5rem;
 }
+
 
 /**** SQUARE TITLE ****/
 
@@ -48,7 +51,7 @@ body{
 .square-title
 {
   width: 150px;
-  margin: 0 auto;
+/*   margin: 0 auto; */
   padding: 2px;
   background-color: black; /* gold */
   /* Single pixel data uri image http://jsfiddle.net/LPxrT/ 
@@ -130,6 +133,11 @@ body{
     
 }
 
+.section-style{
+    display: flex;
+}
+
+
 .section-style--frame{
     text-align: center;
     margin-bottom: 3rem;
@@ -142,19 +150,24 @@ body{
 }
 
 .section-style--picture{
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    max-width: 80%;
-    height: 600px;
-    margin: auto;
+    width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    cursor: zoom-in;
 }
 
 .section-style--label{
-    padding: 3rem;
+    /* padding: 3rem; */
     font-size: 1.3rem;
     font-weight: 300;
     line-height: 30px;
+    width: 50%;
+    margin-left: 3rem;
+}
+
+.section-style--label table{
+    border-spacing: 5px 2rem;
+    margin: 0;
 }
 
 /* Firt section - painting section */
@@ -173,4 +186,67 @@ body{
 
 .orsay-footer a{
     color: white;
+}
+
+/******* RESPONSIVE *******/
+
+@media screen and (max-width: 1081px){
+
+    .section-style{
+        flex-direction: column;
+    }
+
+    .section-style--label{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .section-style, .orsay-footer{
+        margin: 2.1rem 3rem;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .orsay-header{
+        margin-top: 6rem;
+    }
+
+    .orsay-logo{
+        width: 40%;
+    }
+
+    .orsay-phrase{
+        max-width: 80%
+    }
+}
+
+@media screen and (max-width: 560px){
+
+    .orsay-logo{
+        width: 55%;
+    }
+    
+    .orsay-header{
+        height: 63vh;
+    }
+
+    .orsay-phrase{
+        position: relative;
+        bottom: 10rem;
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 499px){
+    .section-style, .orsay-footer{
+        margin: 2.1rem 1rem;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+    .orsay-header {
+        height: 53vh;
+    }
 }
