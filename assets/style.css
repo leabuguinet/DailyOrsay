@@ -18,15 +18,14 @@ body{
     background-position: center;
     background-size: contain;
     width: 100%;
-    height: 80vh;
-    
+    height: 75vh;
 }
 
 .orsay-phrase{
     font-size: 2rem;
     font-weight: 300;
     max-width: 60%;
-    margin-bottom: 8rem;
+    margin-bottom: 11rem;
 }
 
 .orsay-logo{
@@ -48,6 +47,50 @@ body{
 
 }
 
+/* Down arrow before square */
+.square-title::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 49px;
+    display: block;
+    transform: rotate(45deg);
+    bottom: 171.5px;
+    background-color: white;
+    right: 167.4px;
+    animation: squareAfter 2s linear forwards;
+}
+
+.square-title::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 49px;
+    display: block;
+    transform: rotate(45deg);
+    bottom: 147.8px;
+    background-color: white;
+    right: 191.4px;
+    animation: squareBefore 2s linear forwards;
+   
+}
+
+@keyframes squareBefore {
+    
+    100%{
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes squareAfter {
+    
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+
+/* Square */
 .square-title
 {
   width: 150px;
@@ -62,7 +105,7 @@ body{
   background-size: 0 2px, 0 100%, 0% 0px;
   background-position: left top, top right, bottom right;
   -webkit-animation: drawBorderFromCenter 4s forwards;
-  animation: drawBorderFromCenter 4s forwards;
+  animation: drawBorderFromCenter 4s forwards 2s;
   transform: rotate(45deg);
 
 }
