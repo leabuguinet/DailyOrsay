@@ -125,11 +125,24 @@ function fetchArtDetail(typeOfArt, urlArtDetail) {
         document.querySelector(`.orsay-${typeOfArt}--label .artDescription`).innerHTML = errorMessage;
       };
 
-      artHeight = artwork.hits.hits[0]._source.height / 100;
-      artWidth = artwork.hits.hits[0]._source.width / 100;
+      /* Height */
+  
+      if(artwork.hits.hits[0]._source.height > 0 && artwork.hits.hits[0]._source.height != 'undefined'){
+        artHeight = artwork.hits.hits[0]._source.height / 10;
+        document.querySelector(`.orsay-${typeOfArt}--label .artHeight`).innerHTML = artHeight;        
+      }else{
+        document.querySelector(`.orsay-${typeOfArt}--label .undefined-size`).innerHTML = errorMessage;
+      };
 
-      document.querySelector(`.orsay-${typeOfArt}--label .artHeight`).innerHTML = artHeight;
-      document.querySelector(`.orsay-${typeOfArt}--label .artWidth`).innerHTML = artWidth;
+      /* Width */
+
+      if(artwork.hits.hits[0]._source.width > 0 && artwork.hits.hits[0]._source.width != 'undefined'){       
+        artWidth = artwork.hits.hits[0]._source.width / 10;
+        document.querySelector(`.orsay-${typeOfArt}--label .artWidth`).innerHTML = artWidth;
+      }else{
+        document.querySelector(`.orsay-${typeOfArt}--label .undefined-size`).innerHTML = errorMessage;
+      }
+      
     });
 
 };
@@ -141,3 +154,25 @@ function fetchArtDetail(typeOfArt, urlArtDetail) {
 fetchArtDetail(painting, 'paintingdata.php');
 fetchArtDetail(sculpture, 'sculpturedata.php');
 fetchArtDetail(photograph, 'photographdata.php');
+
+
+
+/* Animation delay */
+/* 
+let arrow = document.querySelector('.square-title');
+
+
+function getOffset(el) {
+  const rect = el.getBoundingClientRect();
+
+  
+  return {
+    left: rect.left + window.scrollX,
+    top: rect.top + window.scrollY
+
+    
+  };
+}
+
+getOffset(arrow);
+console.log(left); */
