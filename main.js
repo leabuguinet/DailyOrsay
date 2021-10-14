@@ -45,25 +45,30 @@ function fetchArtDetail(typeOfArt, urlArtDetail) {
       if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0])) {
         artistName = artwork.hits.hits[0]._source.authors[0].name.fr;
         document.querySelector(`.orsay-${typeOfArt}--label .artistName`).innerHTML = artistName;
+
+          /* Birth date */
+          if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0]) && doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].birth)) {
+            birthDate = artwork.hits.hits[0]._source.authors[0].birth.display;
+            document.querySelector(`.orsay-${typeOfArt}--label .birthDate`).innerHTML = '(' + birthDate.substring(0, 4) + '-';
+          } else {
+            document.querySelector(`.orsay-${typeOfArt}--label .birthDate`).innerHTML = '';
+          };
+
+          /* Death Date */
+          if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0]) && doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].death)) {
+            deathDate = artwork.hits.hits[0]._source.authors[0].death.display;
+            document.querySelector(`.orsay-${typeOfArt}--label .deathDate`).innerHTML = deathDate.substring(0, 4) + ')';
+          } else {
+            document.querySelector(`.orsay-${typeOfArt}--label .deathDate`).innerHTML = '';
+          };
+
       } else {
         document.querySelector(`.orsay-${typeOfArt}--label .artistName`).innerHTML = errorMessage;
+        document.querySelector(`.orsay-${typeOfArt}--label .birthDate`).innerHTML = '';
+        document.querySelector(`.orsay-${typeOfArt}--label .deathDate`).innerHTML = '';
       };
 
-      /* Birth date */
-      if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0]) && doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].birth)) {
-        birthDate = artwork.hits.hits[0]._source.authors[0].birth.display;
-        document.querySelector(`.orsay-${typeOfArt}--label .birthDate`).innerHTML = birthDate.substring(0, 4);
-      } else {
-        document.querySelector(`.orsay-${typeOfArt}--label .birthDate`).innerHTML = errorMessage;
-      };
-
-      /* Death Date */
-      if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0]) && doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].death)) {
-        deathDate = artwork.hits.hits[0]._source.authors[0].death.display;
-        document.querySelector(`.orsay-${typeOfArt}--label .deathDate`).innerHTML = deathDate.substring(0, 4);
-      } else {
-        document.querySelector(`.orsay-${typeOfArt}--label .deathDate`).innerHTML = errorMessage;
-      };
+      
 
       /* Wikipedia extract */
       if (doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0]) && doesExistIsEmpty(artwork.hits.hits[0]._source.authors[0].wikipedia_extract)) {
