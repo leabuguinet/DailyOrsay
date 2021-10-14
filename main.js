@@ -142,7 +142,7 @@ function fetchArtDetail(typeOfArt, urlArtDetail) {
       }else{
         document.querySelector(`.orsay-${typeOfArt}--label .undefined-size`).innerHTML = errorMessage;
       }
-      
+
     });
 
 };
@@ -158,21 +158,27 @@ fetchArtDetail(photograph, 'photographdata.php');
 
 
 /* Animation delay */
-/* 
-let arrow = document.querySelector('.square-title');
 
+//https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 
-function getOffset(el) {
-  const rect = el.getBoundingClientRect();
-
-  
-  return {
-    left: rect.left + window.scrollX,
-    top: rect.top + window.scrollY
-
-    
-  };
+let options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1
 }
 
-getOffset(arrow);
-console.log(left); */
+let callback = (entries, observer) => {
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting){
+      document.querySelector('.square-title').classList.add("square-title-animation")
+    }
+    
+  });
+};
+
+let observer = new IntersectionObserver(callback, options);
+
+let target = document.querySelector('.square-title');
+
+observer.observe(target);

@@ -12,20 +12,25 @@ body{
 
 /**** HEADER ****/
 
+header{
+    height: 100vh;
+}
+
 .orsay-header{
     background: linear-gradient(0deg, rgba(0,0,0,1) 8%, rgba(255,255,255,0) 15%, rgba(254,254,254,0) 100%), url('background-orsay.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     width: 100%;
-    height: 75vh;
+    height: 85vh;
 }
 
 .orsay-phrase{
     font-size: 2rem;
     font-weight: 300;
     max-width: 60%;
-    margin-bottom: 11rem;
+    margin-bottom: 4rem;
+    position: relative;
 }
 
 .orsay-logo{
@@ -34,6 +39,37 @@ body{
     position: absolute;
     top: 5rem;
 }
+
+
+
+/* Down arrow before square */
+.orsay-arrow::before {
+    content: "";
+    position: relative;
+    width: 2px;
+    height: 49px;
+    display: block;
+    top: 0px;
+    background-color: white;
+    margin: auto;
+    transform: rotate(45deg);
+    left: 18px;
+}
+
+.orsay-arrow::after {
+    content: "";
+    position: relative;
+    width: 2px;
+    height: 49px;
+    display: block;
+    background-color: white;
+    margin: auto;
+    transform: rotate(-45deg);
+    right: 16px;
+    bottom: 49px;
+    }
+
+
 
 
 /**** SQUARE TITLE ****/
@@ -47,54 +83,11 @@ body{
 
 }
 
-/* Down arrow before square */
-.square-title::before {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 49px;
-    display: block;
-    transform: rotate(45deg);
-    bottom: 171.5px;
-    background-color: white;
-    right: 167.4px;
-    animation: squareAfter 2s linear forwards;
-}
-
-.square-title::after {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 49px;
-    display: block;
-    transform: rotate(45deg);
-    bottom: 147.8px;
-    background-color: white;
-    right: 191.4px;
-    animation: squareBefore 2s linear forwards;
-   
-}
-
-@keyframes squareBefore {
-    
-    100%{
-        transform: rotate(90deg);
-    }
-}
-
-@keyframes squareAfter {
-    
-    100%{
-        transform: rotate(0deg);
-    }
-}
-
-
 /* Square */
 .square-title
 {
   width: 150px;
-/*   margin: 0 auto; */
+  margin: 9rem auto 6rem ;
   padding: 2px;
   background-color: black; /* gold */
   /* Single pixel data uri image http://jsfiddle.net/LPxrT/ 
@@ -104,10 +97,13 @@ body{
   background-repeat: no-repeat;
   background-size: 0 2px, 0 100%, 0% 0px;
   background-position: left top, top right, bottom right;
-  -webkit-animation: drawBorderFromCenter 4s forwards;
-  animation: drawBorderFromCenter 4s forwards 2s;
   transform: rotate(45deg);
 
+}
+
+.square-title-animation{
+    -webkit-animation: drawBorderFromCenter 4s forwards;
+    animation: drawBorderFromCenter 4s forwards;
 }
 
 @keyframes drawBorderFromCenter {
@@ -290,7 +286,29 @@ body{
     .section-style, .orsay-footer{
         margin: 2.1rem 3rem;
     }
+
+    .orsay-header {
+        height: 56vh;
+        width: 100vw;
+        background-position: center;
+        background-size: cover;
+        margin-top: 12rem;
+    }
+
+    .square-title{
+        margin-top: -7rem; 
+    }
+
+
 }
+
+@media screen and (max-width: 888px){
+
+    .orsay-header {
+        height: 52vh;
+    }
+}
+
 
 @media screen and (max-width: 800px){
     .orsay-header{
@@ -304,6 +322,18 @@ body{
     .orsay-phrase{
         max-width: 80%
     }
+
+    .orsay-header {
+        height: 57vh;
+        margin-top: 12rem;
+    }
+}
+
+@media screen and (max-width: 665px){
+    .orsay-header {
+        height: 53vh;
+        margin-top: 12rem;
+    }
 }
 
 @media screen and (max-width: 560px){
@@ -312,16 +342,23 @@ body{
         width: 55%;
     }
     
-    .orsay-header{
-        height: 63vh;
-    }
 
     .orsay-phrase{
         position: relative;
-        bottom: 10rem;
+        bottom: 5rem;
         font-size: 1.5rem;
         margin-bottom: 0;
     }
+
+    .orsay-header {
+        height: 81vh;
+        margin-top: 10rem;
+    }
+
+    .square-title{
+        margin-top: 2rem; 
+    }
+
 }
 
 @media screen and (max-width: 499px){
@@ -333,10 +370,14 @@ body{
         font-size: 1.1rem;
     }
 
+    .orsay-header {
+        margin-top: 9rem;
+    }
+
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 336px){
     .orsay-header {
-        height: 53vh;
+        margin-top: 5rem;
     }
 }
