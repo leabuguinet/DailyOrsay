@@ -5,14 +5,7 @@ Daily Orsay
 
 WORK IN PROGRESS !
 
-NEW ! V2 : the page now displays a painting, a sculpture and a photograph everyday ! 
-
-Next steps of the V2 : 
-    -> managing the languages, display the information in French when the English translation is not available 
-    -> link to the wikipedia page if it exists 
-
-V3 :
-    -> Use Php to make the request, so the API is not public, and the project can go online ! 
+You can view it online : https://dailyorsay.leab.me
 
 /////// ENGLISH
 
@@ -28,5 +21,5 @@ Petit projet qui utilise l'API mise à disposition par la RMNGP (Réunion des Mu
 
 https://api.art.rmngp.fr/?locale=fr
 
-Tous les jours, une peinture, une sculpture et une photographie du Musée d'Orsay s'affiche, ainsi que ses informations. Il y a environ des milliers d'oeuvres à découvrir ! 
+Tous les jours, une peinture, une sculpture et une photographie du Musée d'Orsay s'affiche, ainsi que ses informations. Il y a des milliers d'oeuvres à découvrir ! 
 
