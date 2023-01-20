@@ -1,0 +1,11 @@
+dist
+
+.DS_Store
+
+config.php
+config.js
+
+node_modules
+
+.env
+cacert-2021-09-30.pem

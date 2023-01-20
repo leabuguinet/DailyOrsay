@@ -1,0 +1,419 @@
+
+html, body {
+    margin: 0;
+}
+  .wrapper {
+    height: 100vh;
+    .scrolling-wrapper {
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      .scroll-item {
+        width: 100vh;
+        height: 100vh;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 100px;
+        vertical-align: top;
+        margin-right: -5px;
+        &:nth-child(odd) {
+          background: #f1f1f1;
+        }
+      }
+    }
+}
+
+
+
+
+
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Paths
+$pathToPng : '../../dist/img/png/';
+$pathToSvg : '../../dist/img/svg/';
+$pathToJpg : '../../dist/img/jpg/';
+$pathToFont : '../../dist/font/';
+
+body{
+    background-color: black;
+    font-family: 'Lato', sans-serif;
+    color: white;
+}
+
+/**** HEADER ****/
+
+header{
+    height: 100vh;
+}
+
+.orsay-header{
+    background: linear-gradient(0deg, rgba(0,0,0,1) 8%, rgba(255,255,255,0) 15%, rgba(254,254,254,0) 100%), url($pathToJpg + 'background-orsay.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 85vh;
+}
+
+.orsay-phrase{
+    font-size: 2rem;
+    font-weight: 300;
+    max-width: 60%;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.orsay-logo{
+    margin-left: 6rem;
+    width: 30%;
+    position: absolute;
+    top: 5rem;
+}
+
+
+
+/* Down arrow before square */
+.orsay-arrow::before {
+    content: "";
+    position: relative;
+    width: 2px;
+    height: 49px;
+    display: block;
+    top: 0px;
+    background-color: white;
+    margin: auto;
+    transform: rotate(45deg);
+    left: 18px;
+}
+
+.orsay-arrow::after {
+    content: "";
+    position: relative;
+    width: 2px;
+    height: 49px;
+    display: block;
+    background-color: white;
+    margin: auto;
+    transform: rotate(-45deg);
+    right: 16px;
+    bottom: 49px;
+    }
+
+
+
+
+/**** SQUARE TITLE ****/
+
+.square-title h2{
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    transform: rotate(-45deg);
+    transform-origin: center; 
+
+}
+
+/* Square */
+.square-title
+{
+  width: 150px;
+  margin: 9rem auto 6rem ;
+  padding: 2px;
+  background-color: black; /* gold */
+  /* Single pixel data uri image http://jsfiddle.net/LPxrT/ 
+  /* background-image: white, white, black */
+  background-image: url('data:image/gif;base64,R0lGODlhAQABAPAAAP///////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='),  url('data:image/gif;base64,R0lGODlhAQABAPAAAP///////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='),
+  url('data:image/gif;base64,R0lGODlhAQABAPAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==');
+  background-repeat: no-repeat;
+  background-size: 0 2px, 0 100%, 0% 0px;
+  background-position: left top, top right, bottom right;
+  transform: rotate(45deg);
+
+}
+
+.square-title-animation{
+    -webkit-animation: drawBorderFromCenter 4s forwards;
+    animation: drawBorderFromCenter 4s forwards;
+}
+
+@keyframes drawBorderFromCenter {
+    0% {
+      background-size: 0 2px, 0 0, 100% 100%;
+     
+    }
+    50% {
+      background-size: 98% 98%, 0 0, 100% 100%;
+     
+    }
+    99%
+    {
+      background-size: 98% 98%, 100% 98%, 0 2px;
+      
+    }
+    100%
+    {
+      background-size: 98% 98%, 100% 98%, 0 2px;
+      background-color: white; 
+    }
+    
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes drawBorderFromCenter {
+    0% {
+      background-size: 0 2px, 0 0, 100% 100%;
+      
+    }
+    50% {
+      background-size: 98% 98%, 0 0, 100% 100%;
+      
+    }
+    99%
+    {
+      background-size: 98% 98%, 100% 98%, 0 2px;
+      
+    }
+    100%
+    {
+      background-size: 98% 98%, 100% 98%, 0 2px;
+      background-color: white; 
+    }
+    
+}
+
+.content
+{
+    display: flex;
+    align-items: center;
+    background: black;
+    text-align: center;
+    height: 150px;
+}
+
+
+
+
+/**** ART SECTION - GENERAL ****/
+
+.section-style, .orsay-footer{
+    border: solid white 1px;
+    margin: 0 6rem 3rem;
+    padding: 2rem;
+    
+}
+
+.section-style{
+    display: flex;
+}
+
+
+.section-style--frame{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-style--frame h4{
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: 2rem;
+}
+
+.section-style--picture{
+    width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+.section-style--label{
+    /* padding: 3rem; */
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 30px;
+    width: 50%;
+    margin-left: 3rem;
+}
+
+.section-style--label table{
+    border-spacing: 5px 2rem;
+    margin: 0;
+}
+
+/* Firt section - painting section */
+
+.orsay-painting{
+    margin-top: 2.2rem;
+}
+
+
+/**** FOOTER ****/
+
+.orsay-footer{
+    font-weight: 300;
+    line-height: 57px;
+    font-size: 1.4rem;
+}
+
+.orsay-footer a{
+    color: white;
+    text-decoration: none;
+}
+
+.orsay-footer p{
+    text-align: left;
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+}
+
+.orsay-footer p::after, .orsay-footer p::before{
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -0.1rem;
+    display: block;
+    width: 30%;
+    height: 1px;
+    background: white;
+    transition: 1.1s var(--ease-out-expo);
+}
+
+.orsay-footer p::before{
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.orsay-footer p::after{
+    transform-origin: right;
+    transition-delay: 0.25s;
+}
+
+.orsay-footer p:hover::before{
+    transform: scaleX(1);
+    transition-delay: 0.25s;
+}
+
+.orsay-footer p:hover::after{
+    transform: scaleX(0);
+    transition-delay: 0s;
+}
+
+
+
+
+                    /******* RESPONSIVE *******/
+
+@media screen and (max-width: 1081px){
+
+    .section-style{
+        flex-direction: column;
+    }
+
+    .section-style--label{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .section-style, .orsay-footer{
+        margin: 2.1rem 3rem;
+    }
+
+    .orsay-header {
+        height: 56vh;
+        width: 100vw;
+        background-position: center;
+        background-size: cover;
+        margin-top: 12rem;
+    }
+
+    .square-title{
+        margin-top: -7rem; 
+    }
+
+
+}
+
+@media screen and (max-width: 888px){
+
+    .orsay-header {
+        height: 52vh;
+    }
+}
+
+
+@media screen and (max-width: 800px){
+    .orsay-header{
+        margin-top: 6rem;
+    }
+
+    .orsay-logo{
+        width: 40%;
+    }
+
+    .orsay-phrase{
+        max-width: 80%
+    }
+
+    .orsay-header {
+        height: 57vh;
+        margin-top: 12rem;
+    }
+}
+
+@media screen and (max-width: 665px){
+    .orsay-header {
+        height: 53vh;
+        margin-top: 12rem;
+    }
+}
+
+@media screen and (max-width: 560px){
+
+    .orsay-logo{
+        width: 55%;
+    }
+    
+
+    .orsay-phrase{
+        position: relative;
+        bottom: 5rem;
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    .orsay-header {
+        height: 81vh;
+        margin-top: 10rem;
+    }
+
+    .square-title{
+        margin-top: 2rem; 
+    }
+
+}
+
+@media screen and (max-width: 499px){
+    .section-style, .orsay-footer{
+        margin: 2.1rem 1rem;
+    }
+    .orsay-footer{
+
+        font-size: 1.1rem;
+    }
+
+    .orsay-header {
+        margin-top: 9rem;
+    }
+
+}
+
+@media screen and (max-width: 336px){
+    .orsay-header {
+        margin-top: 5rem;
+    }
+}

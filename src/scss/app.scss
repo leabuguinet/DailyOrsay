@@ -1,0 +1,187 @@
+
+@use 'sass:math';
+@import 'variables';
+
+* {
+  margin: 0 ;
+  box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Lato', sans-serif;
+    color: $white;
+}
+
+
+.wrapper {
+    height: 100vh;
+    .scrolling-wrapper {
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      .scroll-item {
+        
+        width: 100vw;
+        height: 100vh;
+
+
+        &:first-child {
+          @include max($bp-tablet-px){
+            width: 150vw;
+          }
+  
+  
+          @include max($bp-mobileXL-px){
+            width: 180vw;
+          }
+        }
+
+
+        &.transition-item {
+          width: 50vw;
+          
+          span {
+            margin: auto;
+          } 
+        }
+
+        display: inline-flex;
+        //justify-content: center;
+        //align-items: center;
+        //font-size: 100px;
+        vertical-align: top;
+        margin-right: -5px;
+
+        background-color: $black;
+
+        @include minH(800px){
+          background-color: rgb(0, 0, 0);
+        }
+
+        &:nth-child(odd) {
+          //background: #706262;
+        }
+      }
+    }
+}
+
+
+.home {
+
+  background-image: url($pathToJpg + 'background-orsay.jpg');
+  background-size: cover;
+
+  @include max($bp-tablet-px){
+    background-position: 40%;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: normal;
+    width: 100%;
+
+    @include max($bp-tablet-px){
+      justify-content: space-between;
+    }
+    
+    img {
+      width: 40%;
+      max-width: 400px;
+      object-fit: contain;
+      margin: 5%;
+    }
+  }
+
+  .orsay-phrase {
+    font-size: font-clamp(16, 30, $bp-small, $bp-large);
+    font-weight: 300;
+    margin: 4rem 5%;
+    white-space: wrap;
+
+    @include max($bp-tablet-px){
+      min-width: 80vw;
+    }
+
+    @include min($bp-tablet-px){
+
+      max-width: 500px;
+    }
+  }
+
+  div {
+    display: flex;
+    //flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @include max($bp-tablet-px){
+      max-width: 60%;
+      max-width: 100vw;
+      text-align: center;
+      flex-direction: column;
+    }
+  }
+
+  .icon {
+
+    width: 50px;
+    height: 50px;
+    padding-bottom: 3rem;
+    margin-right: 10rem;
+    
+    @include max($bp-tablet-px) {
+      margin-bottom: 5rem;
+      margin-right : unset;
+    }
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @media (pointer:coarse) {
+      background-image: url($pathToPng + 'finger_right_swipe.png');
+    }
+
+
+    @media (pointer:fine) {
+      background-image: url($pathToPng + 'scroll-bar.png');
+    }
+  }
+}
+
+.painting-first {
+
+  .icon-painting {
+    background-image: url($pathToSvg + 'icon-painting.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+
+  }
+}
+
+.sculpture-first {
+
+  .icon-sculpture {
+    background-image: url($pathToSvg + 'icon-sculpture.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.photography-first {
+
+  .icon-photography {
+    background-image: url($pathToSvg + 'icon-photography.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+  }
+}
+

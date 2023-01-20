@@ -1,0 +1,127 @@
+// Paths
+$pathToPng : '../../dist/img/png/';
+$pathToSvg : '../../dist/img/svg/';
+$pathToJpg : '../../dist/img/jpg/';
+$pathToFont : '../../dist/font/';
+
+// Colors
+$white : #ffffff;
+$black: #000000;
+
+
+// Transitions
+$smooth : all .2s ease-in-out;
+
+// Breakpoints
+$bp-extralarge-px: 1920px;
+$bp-large-px: 1440px;
+$bp-regular-px: 1280px;
+$bp-small-px: 1024px;
+$bp-tablet-px: 768px;
+$bp-mobileXL-px: 525px;
+$bp-mobile-px: 375px;
+$bp-s-mobile-px: 320px;
+
+$bp-extralarge: 1920;
+$bp-large: 1440;
+$bp-regular: 1280;
+$bp-small: 1024;
+$bp-tablet: 768;
+$bp-mobileXL: 525;
+$bp-mobile: 375;
+$bp-s-mobile: 320;
+
+
+//Functions
+
+///Adapt font-size according to the screen width and convert it to rem
+@function font-clamp($minFontSizepx, $maxFontSizepx, $minWidthPx, $maxWidthPx) {
+
+    $pixelsPerRem : 16;
+    $minWidth : math.div($minWidthPx, $pixelsPerRem);
+    $maxWidth : math.div($maxWidthPx, $pixelsPerRem);
+
+    $minFontSize : math.div($minFontSizepx, 16);
+    $maxFontSize : math.div($maxFontSizepx, 16);
+
+    $slope :  math.div($maxFontSize - $minFontSize, $maxWidth - $minWidth);
+
+    $yAxisIntersection : - $minWidth * $slope + $minFontSize;
+
+    $slopecal : ($slope * 100);
+
+    $result : clamp(#{$minFontSize}rem, #{$yAxisIntersection}rem + #{$slopecal}vw, #{$maxFontSize}rem);
+
+    @return $result;
+
+}
+
+///Convert px to rem
+@function toRem($px){
+    $pixelsPerRem : 16;
+    $result : math.div($px, $pixelsPerRem);
+    @return #{$result}rem;
+}
+
+// Mixins
+@mixin min($min) {
+    @media (min-width: $min) {
+        @content;
+    }
+}
+@mixin max($max) {
+    @media (max-width: $max) {
+        @content;
+    }
+}
+
+
+@mixin minH($min) {
+    @media (min-he: $min) {
+        @content;
+    }
+}
+@mixin maxH($max) {
+    @media (max-height: $max) {
+        @content;
+    }
+}
+
+/// Remove the unit of a length (px,em,rem)
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+/// 
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        $calcul : $number * 0 + 1;
+        @return calc($number / $calcul);
+    }
+    @return $number;
+}
+
+@mixin responsive($fmin, $fdiff, $breakmin, $breakmax, $property, $important : false) {
+    $value_important : '' ;
+    $breakdiff : $breakmax - $breakmin;
+    $breakdiff : strip_unit($breakdiff);
+
+    @if $important {
+        $value_important : '!important';
+    }
+
+    #{$property}: calc( #{$fmin} + #{$fdiff} * ((100vw - #{$breakmin}) / #{$breakdiff}) ) #{$value_important};
+
+    @media(max-width: $breakmin) {
+        #{$property} : $fmin #{$value_important};
+    }
+    @media(min-width: round($breakmin + $breakdiff)) {
+        #{$property} : round($fmin + $fdiff) #{$value_important};
+    }
+
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {@content}
+    &:-moz-placeholder           {@content}
+    &::-moz-placeholder          {@content}
+    &:-ms-input-placeholder      {@content}  
+}
