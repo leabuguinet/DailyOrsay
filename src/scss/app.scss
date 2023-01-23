@@ -58,9 +58,9 @@ html, body {
           background-color: rgb(0, 0, 0);
         }
 
-        &:nth-child(odd) {
+       /*  &:nth-child(odd) {
           //background: #706262;
-        }
+        } */
       }
     }
 }
@@ -154,14 +154,32 @@ html, body {
 .painting-first {
 
   .icon-painting {
-    background-image: url($pathToSvg + 'icon-painting.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
+    //background-image: url($pathToSvg + 'icon-painting.svg');
+    //background-size: contain;
+    //background-repeat: no-repeat;
     width: 80px;
     height: 80px;
 
+    .cls-1 {
+      stroke-width: 5;
+      stroke: #ffffff;
+      animation: dash 1s linear;
+      animation-fill-mode: forwards;
+  
+
+      @keyframes dash {
+        to {
+            stroke-dashoffset: 0;
+        } 
+    }
+    }
+    
+    }
+
   }
-}
+
+
+
 
 .sculpture-first {
 
