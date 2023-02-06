@@ -1,61 +1,93 @@
 
-let paths = document.querySelectorAll('path');
 
-//fillSvgPaths()
+function test() {
+  Array.from(document.getElementsByClassName("cls-1")).forEach(pathElement => {
+    pathElement.setAttribute('style', 'stroke-dasharray:'+pathElement.getTotalLength()+';stroke-dashoffset:'+pathElement.getTotalLength())
+    console.log('first');
+  }) 
+};
 
-//document.addEventListener('scroll', fillSvgPaths)
+function test2() {
+  Array.from(document.getElementsByClassName("cls-1")).forEach(pathElement => {
+    //pathElement.setAttribute('style', 'animation: dash 2s linear');
+    pathElement.classList.add('test3');
+    pathElement.setAttribute('style', 'stroke-dasharray:'+pathElement.getTotalLength()+';stroke-dashoffset:'+pathElement.getTotalLength())
 
-function fillSvgPaths() {
-
-    let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-  console.log(scrollPercentage)
-    
-    for (var i = 0; i < paths.length; i++) {
-        let path = paths[i];
-
-        let pathLength = path.getTotalLength();
-
-        path.style.strokeDasharray = pathLength;
-        path.style.strokeDashoffset = pathLength;
-
-        let drawLength = pathLength * (scrollPercentage);
-
-        path.style.strokeDashoffset = pathLength - drawLength;
-    }
+  })
 }
 
+function test3() {
+  Array.from(document.getElementsByClassName("cls-2")).forEach(pathElement => {
+    //pathElement.setAttribute('style', 'animation: dash 2s linear');
+    pathElement.classList.add('test3');
+    pathElement.setAttribute('style', 'stroke-dasharray:'+pathElement.getTotalLength()+';stroke-dashoffset:'+pathElement.getTotalLength())
 
-Array.from(document.getElementsByClassName("cls-1")).forEach(pathElement => {
-  pathElement.setAttribute('style', 'stroke-dasharray:'+pathElement.getTotalLength()+';stroke-dashoffset:'+pathElement.getTotalLength())
-  console.log('first')
+  })
+}
+
+function test4() {
+  Array.from(document.getElementsByClassName("cls-3")).forEach(pathElement => {
+    //pathElement.setAttribute('style', 'animation: dash 2s linear');
+    pathElement.classList.add('test3');
+    pathElement.setAttribute('style', 'stroke-dasharray:'+pathElement.getTotalLength()+';stroke-dashoffset:'+pathElement.getTotalLength())
+
+  })
+}
+
+//test();
+
+
+const body = document.querySelector("body");
+const mainContainer = body.querySelector(".main-container");
+const extraLongContainer = mainContainer.querySelector(".extra-long-container");
+const horizontalCoordinate = body.querySelector(".horizontal-coordinate");
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(".icon-painting", {
+  scrollTrigger: {
+    trigger: '.icon-painting',
+    start: "top center",
+    end: "bottom  bottom",
+    markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20},
+    onEnter: test2,
+  },
+
+  //x: 400, 
+  //rotation: 356, 
+  duration: 4, 
+  stagger: 0.2,
+})
+
+gsap.to(".icon-sculpture", {
+  scrollTrigger: {
+    trigger: '.icon-sculpture',
+    start: "top center",
+    end: "bottom  bottom",
+    markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20},
+    onEnter: test3,
+  },
+
+  //x: 400, 
+  //rotation: 356, 
+  duration: 4, 
+  stagger: 0.2,
+})
+
+gsap.to(".icon-photography", {
+  scrollTrigger: {
+    trigger: '.icon-photography',
+    start: "top center",
+    end: "bottom  bottom",
+    markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20},
+    onEnter: test4,
+  },
+
+  //x: 400, 
+  //rotation: 356, 
+  duration: 4, 
+  stagger: 0.2,
 })
 
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-const scrollingWrapper = document.querySelector('.scrolling-wrapper');
-
-const scrollEnd = scrollingWrapper.scrollWidth;
-
-console.log(scrollEnd);
-
-let tl = gsap.timeline({paused: true});
-
-tl.to(scrollingWrapper, { scrollTo: { x: "max" }, ease: 'linear' });
-
-ScrollTrigger.create({
-  trigger: scrollingWrapper,
-  start: 'top top',
-  end: () => `${scrollEnd}`,
-  animation: tl,
-  scrub: true,
-  pin: true
-});
-
-
-
-/* gsap.to(".icon-painting", {
-  scrollTrigger: ".transition-item", // start the animation when ".box" enters the viewport (once)
-  x: 500,
-  duration: 3,
-}); */
