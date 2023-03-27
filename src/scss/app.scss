@@ -19,31 +19,32 @@ html, body {
 
 .main-container {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     position: relative;
     //overflow: hidden;
 
     .extra-long-container {
       height: 100%;
-      position: relative;
+      //position: relative;
 
 
       .scroll-item {
         
-        width: 100vw;
+        width:100%;
         height: 100vh;
 
 
         &:first-child {
           @include max($bp-tablet-px){
-            width: 150vw;
+            //width: 150vw;
           }
   
   
           @include max($bp-mobileXL-px){
-            width: 180vw;
+            //width: 180vw;
           }
         }
+
 
 
         &.transition-item {
@@ -220,8 +221,8 @@ html, body {
     //background-image: url($pathToSvg + 'icon-sculpture.svg');
     //background-size: contain;
     //background-repeat: no-repeat;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
 
     .cls-3 {
       stroke-width: 5;
@@ -236,4 +237,20 @@ html, body {
 }
 
 
+.section-style {
 
+  display: flex;
+  gap: 1rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 1200px;
+  justify-content: center;
+  div {
+    width: 50%;
+  }
+
+  .orsay-painting--link img, .orsay-sculpture--link img, .orsay-photograph--link img {
+    width: 100%;
+  }
+
+}
