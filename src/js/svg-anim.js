@@ -8,52 +8,43 @@ const svgAnim = {
             }) 
           };
           
-          function test2() {
+          function svgPaintingAnim() {
             Array.from(document.getElementsByClassName("cls-1")).forEach(pathElement => {
               //pathElement.setAttribute('style', 'animation: dash 2s linear');
-              pathElement.classList.add('test3');
+              pathElement.classList.add('svg-animation');
               pathElement.setAttribute('style', 'stroke-dasharray:'+pathElement.getTotalLength()+';stroke-dashoffset:'+pathElement.getTotalLength())
           
             })
           }
           
-          function test3() {
+          function svgSculptureAnim() {
             Array.from(document.getElementsByClassName("cls-2")).forEach(pathElement => {
               //pathElement.setAttribute('style', 'animation: dash 2s linear');
-              pathElement.classList.add('test3');
+              pathElement.classList.add('svg-animation');
               pathElement.setAttribute('style', 'stroke-dasharray:'+pathElement.getTotalLength()+';stroke-dashoffset:'+pathElement.getTotalLength())
           
             })
           }
           
-          function test4() {
+          function svgPhotographAnim() {
             Array.from(document.getElementsByClassName("cls-3")).forEach(pathElement => {
               //pathElement.setAttribute('style', 'animation: dash 2s linear');
-              pathElement.classList.add('test3');
+              pathElement.classList.add('svg-animation');
               pathElement.setAttribute('style', 'stroke-dasharray:'+pathElement.getTotalLength()+';stroke-dashoffset:'+pathElement.getTotalLength())
           
             })
           }
 
-          const body = document.querySelector("body");
-          const mainContainer = body.querySelector(".main-container");
-          const extraLongContainer = mainContainer.querySelector(".extra-long-container");
-          const horizontalCoordinate = body.querySelector(".horizontal-coordinate");
-          
-          
           gsap.registerPlugin(ScrollTrigger);
           
           gsap.to(".icon-painting", {
             scrollTrigger: {
               trigger: '.icon-painting',
-              start: "top center",
+              start: "top 90%",
               end: "bottom  bottom",
-              markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20},
-              onEnter: test2,
+              //markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20},
+              onEnter: svgPaintingAnim,
             },
-          
-            //x: 400, 
-            //rotation: 356, 
             duration: 4, 
             stagger: 0.2,
           })
@@ -61,15 +52,11 @@ const svgAnim = {
           gsap.to(".icon-sculpture", {
             scrollTrigger: {
               trigger: '.icon-sculpture',
-              start: "top top",
-
+              start: "top 90%",
               end: "bottom bottom",
-              markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20},
-              onEnter: test3,
+              //markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20},
+              onEnter: svgSculptureAnim,
             },
-          
-            //x: 400, 
-            //rotation: 356, 
             duration: 4, 
             stagger: 0.2,
           })
@@ -77,20 +64,21 @@ const svgAnim = {
           gsap.to(".icon-photography", {
             scrollTrigger: {
               trigger: '.icon-photography',
-              start: "top center",
+              start: "top 90%",
               end: "bottom  bottom",
-              markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20},
-              onEnter: test4,
+              //markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20},
+              onEnter: svgPhotographAnim,
             },
-          
-            //x: 400, 
-            //rotation: 356, 
             duration: 4, 
             stagger: 0.2,
           })
           
+
+
         
     }
 }
 
 export default svgAnim;
+
+
