@@ -35,7 +35,7 @@ gulp.task('browserSync', function() {
 
 // Sass Build
 const buildSass = cb => {
-  return gulp.src(path.join(srcSassPath, 'app.scss'))
+  return gulp.src(path.join(srcSassPath, 'main.scss'))
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'compressed',
@@ -84,9 +84,10 @@ const watchSass = cb => {
   browserSync.init({
     proxy : siteProxy,
     reloadOnRestart: true,
-    open: "external"
+    open: "local"
   });
-  return gulp.watch([path.join(srcSassPath, '**/*.scss')], gulp.series(buildSass));
+  return gulp.watch("src/scss/*.scss", gulp.series(buildSass));
+  //gulp.watch("app/scss/*.scss", gulp.series("scss"));
 }
 
 // JS Watch
@@ -95,8 +96,9 @@ gulp.task('watchJS', function() {
     proxy : siteProxy,
     open: "external"
   });
-  gulp.watch([path.join(srcJsPath, '**/*.js')], gulp.series(buildJS));
-  gulp.watch([path.join(srcJsPath, '**/*.js')]).on('change', browserSync.reload );
+  gulp.watch("src/js/*.js", gulp.series(buildJS));
+  //gulp.watch([path.join(srcJsPath, '**/*.js')], gulp.series(buildJS));
+  //gulp.watch([path.join(srcJsPath, '**/*.js')]).on('change', browserSync.reload );
 });
 
 gulp.task('watchsrc', function() {
@@ -121,10 +123,16 @@ gulp.task('watchAll', function() {
   browserSync.init({
     proxy : siteProxy
   });
-  gulp.watch([path.join(srcSassPath, 'app.scss')], gulp.series(buildSass));
-  gulp.watch([path.join(srcJsPath, 'app.js')], gulp.series(buildJS));
-  // gulp.watch([path.join(srcJsPath, '**/*.js')]).on('change', browserSync.reload);
-  // gulp.watch([path.join(basePath, '**/*.php'), path.join(basePath, '**/*.html')]).on('change', browserSync.reload );
+  //gulp.watch([path.join(srcSassPath, 'app.scss')], gulp.series(buildSass));
+  gulp.watch("src/scss/*.scss", gulp.series(buildSass));
+  gulp.watch("src/scss/base/*.scss", gulp.series(buildSass));
+  gulp.watch("src/scss/layout/*.scss", gulp.series(buildSass));
+  gulp.watch("src/scss/pages/*.scss", gulp.series(buildSass));
+  //gulp.watch([path.join(srcJsPath, 'app.js')], gulp.series(buildJS));
+  gulp.watch("src/js/*.js", gulp.series(buildJS));
+
+  //gulp.watch([path.join(srcJsPath, '**/*.js')]).on('change', browserSync.reload);
+  //gulp.watch([path.join(basePath, '**/*.php'), path.join(basePath, '**/*.html')]).on('change', browserSync.reload );
 });
 
 

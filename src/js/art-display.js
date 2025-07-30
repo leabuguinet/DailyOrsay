@@ -27,7 +27,6 @@ const artDisplay = {
     const sculpture = 'sculpture';
     const photograph = 'photograph';
 
-
     /**** FUNCTIONS ****/
 
     /* Function to check if an object exists and is not empty */

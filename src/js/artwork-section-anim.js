@@ -77,7 +77,7 @@ const artsectionAnim = {
               start: "top 70%",
               end: "+=400",
               //scrub: true,
-              markers: true
+              markers: false
             }
           });
           
@@ -121,7 +121,7 @@ const artsectionAnim = {
               start: "top 70%",
               end: "+=400",
               //scrub: true,
-              markers: true
+              markers: false
             }
           });
           
